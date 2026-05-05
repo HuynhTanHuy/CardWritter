@@ -1,5 +1,6 @@
-﻿using CardWriter.Model;
-using Duali;
+﻿using CardWriter.Devices;
+using CardWriter.Model;
+using CardWriter.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
@@ -10,49 +11,17 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CardWriter
 {
     public partial class CardProcessForm : Form
     {
-        private const String DEFAULT_DES_KEY = "00000000000000000000000000000000";
-        private const String PICC_KEY = "444F4C5048494E534F4C5554494F4E564E4256544E48434D";
-        private const String AID_000001_KEY = "414944494e464f524d4154494f4e4040";
-        private const String READ_KEY = "414944494e464f524d4154494f4e5240";
-        private const String WRITE_KEY = "414944494e464f524d4154494f4e5740";
-        private const String RW_KEY = "414944494e464f524d4154494f4e5257";
-        private const String CHANGE_ACCESS_KEY = "414944494e464f524d4154494f4e4341";
-        private const int TEKMEDI_ID_FILE_ID = 10;
-        private const int PATIENT_ID_FILE_ID = 22;
-        private const int PATIENT_NAME_FILE_ID = 23;
-        private const int HOST_FILE_ID = 24;
-        private const int ID_LEN = 36;
-        private const int NAME_LEN = 100;
-        private const int TEKMEDI_ID_OFFSET = 22;
-        private const int OTHER_OFFSET = 11;
-        private const String PICC_AID = "000000";
-        private const String AID000001_AID = "000001";
+        private readonly IRfidReader _reader;
+        private readonly CardService _cardService;
 
-        private const String MIFARE_KEY_A = "6C6564616E67";
-        private const String DEFAULT_MIFARE_KEY_A = "FFFFFFFFFFFF";
-        private const String DEFAULT_MIFARE_KEY_B = "FFFFFFFFFFFF";
-
-        private const String ACCESS_BIT = "FF078069";
-
-        private const int DATA_BLOCK = 14;
-        private const int DATA_SECTOR_TRAILER_BLOCK = 15;
-
-
-
-
-
-
-        delegate void Function();
-        private BackgroundWorker multipleCardWriteWorker;
         private BackgroundWorker loadingIndicatorWorker;
-        private BackgroundWorker cardClearWorker;
-        private BackgroundWorker singleCardWriteWorker;
         private bool isWriting;
 
         private Dictionary<String, Hospital> hospitals;
@@ -61,17 +30,56 @@ namespace CardWriter
         int currentId = 0;
         bool cancel = true;
 
+        private CardWorkOperation _activeOperation = CardWorkOperation.None;
+        private CancellationTokenSource _listenCts;
+        private bool _singleWriteTriggered;
 
         public CardProcessForm()
+            : this(CreateDefaultReader(), new CardService(CreateDefaultWriter(), CreateDefaultApiClient()))
         {
+        }
+
+        private static ICardApiClient CreateDefaultApiClient()
+        {
+            var fakeFlag = ConfigurationManager.AppSettings["UseFakeCardApi"];
+            if (string.Equals(fakeFlag, "true", StringComparison.OrdinalIgnoreCase))
+                return new FakeCardApiClient();
+
+            var baseUrl = ConfigurationManager.AppSettings["CardApiBaseUrl"] ?? "";
+            var bearerToken = ConfigurationManager.AppSettings["CardApiBearerToken"] ?? "";
+            var cardTypeId = ConfigurationManager.AppSettings["RfidCardTypeId"] ?? "";
+            return new HttpCardApiClient(new System.Net.Http.HttpClient(), baseUrl, bearerToken, cardTypeId);
+        }
+
+        private static IRfidWriter CreateDefaultWriter()
+        {
+            var flag = ConfigurationManager.AppSettings["UseFakeRfidWriter"];
+            if (string.Equals(flag, "true", StringComparison.OrdinalIgnoreCase))
+                return new FakeRfidWriter();
+            return new DualCardRfidWriter();
+        }
+
+        private static IRfidReader CreateDefaultReader()
+        {
+            var flag = ConfigurationManager.AppSettings["UseFakeRfidReader"];
+            if (string.Equals(flag, "true", StringComparison.OrdinalIgnoreCase))
+                return new FakeRfidReader();
+            return new RealRfidReader();
+        }
+
+        public CardProcessForm(IRfidReader reader, CardService cardService)
+        {
+            _reader = reader ?? throw new ArgumentNullException(nameof(reader));
+            _cardService = cardService ?? throw new ArgumentNullException(nameof(cardService));
+
             InitializeComponent();
-            InitializeReader();
+            if (!(reader is FakeRfidReader))
+                InitializeReader();
 
             label_group.Text = String.Format("{0:00}", int.Parse(textBox_group.Text));
 
             var section = (Hashtable)ConfigurationManager.GetSection("hospitals");
             hospitals = section.Cast<DictionaryEntry>().ToDictionary(d => (string)d.Key, d => JsonConvert.DeserializeObject<Hospital>((string)d.Value));
-
 
             comboBox1.DataSource = new BindingSource(hospitals, null);
             comboBox1.DisplayMember = "Value";
@@ -79,38 +87,251 @@ namespace CardWriter
 
             loadingIndicatorWorker = new BackgroundWorker();
             loadingIndicatorWorker.DoWork += LoadingIndicatorWorker_DoWork;
+
+            _reader.CardScanned += Reader_CardScanned;
         }
 
-        private void CreateLogFile(String hospitalCode)
+        private void Reader_CardScanned(object sender, CardScannedEventArgs e)
         {
-            string filePath = hospitalCode + "_log.txt";
+            if (InvokeRequired)
+            {
+                BeginInvoke(new EventHandler<CardScannedEventArgs>(Reader_CardScanned), sender, e);
+                return;
+            }
 
-            // Kiểm tra đường dẫn này có tồn tại hay không?
+            if (_activeOperation == CardWorkOperation.None)
+                return;
+
+            if (_activeOperation == CardWorkOperation.SingleWrite && _singleWriteTriggered)
+                return;
+
+            var op = _activeOperation;
+            if (op == CardWorkOperation.SingleWrite)
+                _singleWriteTriggered = true;
+            var snap = BuildSnapshot(op);
+            var uid = e.Uid;
+
+            if (op == CardWorkOperation.SingleWrite || op == CardWorkOperation.ClearCard)
+                StopListeningSafe();
+
+            isWriting = true;
+            if (!loadingIndicatorWorker.IsBusy)
+                loadingIndicatorWorker.RunWorkerAsync();
+
+            Task.Run(() =>
+            {
+                var result = _cardService.Process(snap, uid);
+                BeginInvoke(new Action(() => ApplyServiceResult(result, op)));
+            });
+        }
+
+        private CardWorkSnapshot BuildSnapshot(CardWorkOperation op)
+        {
+            var selectedItem = (KeyValuePair<string, Hospital>)comboBox1.SelectedItem;
+            int group = 1;
+            int.TryParse(textBox_group.Text, out group);
+            int singleId = 0;
+            int.TryParse(cardIdInput.Text, out singleId);
+
+            return new CardWorkSnapshot
+            {
+                Operation = op,
+                IsCancelled = () => cancel,
+                HospitalLogKey = selectedItem.Key,
+                HospitalApiId = selectedItem.Value.Id,
+                HospitalCode = hospitalCode.Text,
+                BatchCode = textBox_group.Text.Trim(),
+                GroupNumber = group,
+                BatchCurrentId = currentId,
+                BatchLastId = lastId,
+                SinglePatientNumericId = singleId,
+                ClearCardIdText = cardIdInput.Text
+            };
+        }
+
+        private void ApplyServiceResult(CardServiceResult res, CardWorkOperation op)
+        {
+            isWriting = false;
+
+            if (res.ErrorKind == CardServiceErrorKind.Cancelled)
+            {
+                ResetAfterStop();
+                return;
+            }
+
+            if (!res.Success)
+            {
+                if (!string.IsNullOrEmpty(res.UserMessage))
+                    MessageBox.Show(res.UserMessage, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                indicatorLabel.Text = res.IndicatorText ?? res.UserMessage;
+                indicatorImage.Image = Properties.Resources.card_write_error;
+                indicatorImage.Refresh();
+
+                if (op == CardWorkOperation.BatchWrite)
+                {
+                    cancel = true;
+                    RefreshData();
+                    button1.Text = "GHI";
+                    button2.Enabled = true;
+                    button3.Enabled = true;
+                    StopListeningSafe();
+                    _activeOperation = CardWorkOperation.None;
+                }
+                else if (op == CardWorkOperation.SingleWrite)
+                {
+                    cancel = true;
+                    _singleWriteTriggered = false;
+                    button1.Enabled = true;
+                    button2.Enabled = true;
+                    button3.Enabled = true;
+                    StopListeningSafe();
+                    _activeOperation = CardWorkOperation.None;
+                }
+                else if (op == CardWorkOperation.ClearCard)
+                {
+                    cancel = true;
+                    _singleWriteTriggered = false;
+                    button1.Enabled = true;
+                    button2.Enabled = true;
+                    button3.Enabled = true;
+                    StopListeningSafe();
+                    _activeOperation = CardWorkOperation.None;
+                }
+                return;
+            }
+
+            indicatorLabel.Text = res.IndicatorText ?? "Thành công";
+            indicatorImage.Image = Properties.Resources.card_write_done;
+            indicatorImage.Refresh();
+
+            if (op == CardWorkOperation.BatchWrite && res.NextBatchCurrentId.HasValue)
+            {
+                currentId = res.NextBatchCurrentId.Value;
+                patientCode.Text = String.Format("{0:00000}", currentId);
+                start.Text = patientCode.Text;
+            }
+
+            if (op == CardWorkOperation.BatchWrite)
+            {
+                if (res.BatchRangeCompleted)
+                {
+                    MessageBox.Show("Đã hoàn tất quá trình ghi thẻ", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    FinishBatchUi();
+                    return;
+                }
+
+                if (res.PromptContinueBatch)
+                {
+                    if (MessageBox.Show("Nhấn ok để tiếp tục", "Thành công", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+                    {
+                        indicatorImage.Image = Properties.Resources.cardRequestBlinkOn;
+                        indicatorLabel.Text = "";
+                    }
+                    else
+                    {
+                        FinishBatchUi();
+                    }
+                }
+                else
+                    FinishBatchUi();
+
+                return;
+            }
+
+            if (op == CardWorkOperation.SingleWrite)
+            {
+                Task.Delay(500).ContinueWith(_ => BeginInvoke(new Action(() =>
+                {
+                    RefreshData();
+                    _singleWriteTriggered = false;
+                    button1.Enabled = true;
+                    button2.Enabled = true;
+                    button3.Enabled = true;
+                    button1.Text = "GHI";
+                    indicatorImage.Image = Properties.Resources.cardRequestBlinkOn;
+                    indicatorLabel.Text = "";
+                    cancel = true;
+                    StopListeningSafe();
+                    _activeOperation = CardWorkOperation.None;
+                })));
+                return;
+            }
+
+            if (op == CardWorkOperation.ClearCard)
+            {
+                Task.Delay(500).ContinueWith(_ => BeginInvoke(new Action(() =>
+                {
+                    RefreshData();
+                    _singleWriteTriggered = false;
+                    button1.Enabled = true;
+                    button2.Enabled = true;
+                    button3.Enabled = true;
+                    button1.Text = "GHI";
+                    indicatorImage.Image = Properties.Resources.cardRequestBlinkOn;
+                    indicatorLabel.Text = "";
+                    cancel = true;
+                    StopListeningSafe();
+                    _activeOperation = CardWorkOperation.None;
+                })));
+            }
+        }
+
+        private void FinishBatchUi()
+        {
+            cancel = true;
+            _singleWriteTriggered = false;
+            RefreshData();
+            button1.Text = "GHI";
+            indicatorImage.Image = Properties.Resources.cardRequestBlinkOn;
+            indicatorLabel.Text = "";
+            button2.Enabled = true;
+            button3.Enabled = true;
+            StopListeningSafe();
+            _activeOperation = CardWorkOperation.None;
+        }
+
+        private void ResetAfterStop()
+        {
+            _singleWriteTriggered = false;
+            RefreshData();
+            button1.Text = "GHI";
+            indicatorImage.Image = Properties.Resources.cardRequestBlinkOn;
+            indicatorLabel.Text = "";
+            button2.Enabled = true;
+            button3.Enabled = true;
+        }
+
+        private void StopListeningSafe()
+        {
+            _listenCts?.Cancel();
+            _listenCts?.Dispose();
+            _listenCts = null;
+            _reader.StopListening();
+        }
+
+        private void CreateLogFile(String hospitalCodePath)
+        {
+            string filePath = hospitalCodePath + "_log.txt";
             if (!File.Exists(filePath))
             {
                 var logFile = File.Create(filePath);
                 logFile.Close();
                 File.AppendAllLines(filePath, new List<string>() { "    #### TIME ####    " + "\t|" + "    #### CARD ####     " + "|  #### ACTION ####" });
             }
-
         }
 
-        private int GetLastedId(String hospitalCode)
+        private int GetLastedId(String hospitalCodePath)
         {
-            string filePath = hospitalCode + "_log.txt";
-
-            // Kiểm tra đường dẫn này có tồn tại hay không?
+            string filePath = hospitalCodePath + "_log.txt";
             if (File.Exists(filePath))
             {
-                // Xóa file
                 var lines = File.ReadAllLines(filePath);
                 if (lines.Length == 0)
-                {
                     return 0;
-                }
-                string lastIndex = "";
+
                 int length = lines.Length;
-                while (length > 0) {
+                while (length > 0)
+                {
                     String content = lines[--length];
                     try
                     {
@@ -118,7 +339,7 @@ namespace CardWriter
                         string lastAction = content.Split('|')[2].Trim();
                         if (lastAction == "WRITE")
                         {
-                            lastIndex = lastCard.Substring(lastCard.Length - 5, 5);
+                            string lastIndex = lastCard.Substring(lastCard.Length - 5, 5);
                             return int.Parse(lastIndex);
                         }
                     }
@@ -128,52 +349,12 @@ namespace CardWriter
                     }
                 }
             }
-
             return 0;
-
-        }
-
-        private void MultipleCardWriterWorker_DoneWork(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if (currentId <= lastId && !cancel && !isWriting)
-            {
-                if (MessageBox.Show("Nhấn ok để tiếp tục", "Thành công", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
-                {
-                    multipleCardWriteWorker = new BackgroundWorker();
-                    multipleCardWriteWorker.DoWork += MultipleCardWriteWorker_DoWork;
-                    multipleCardWriteWorker.RunWorkerCompleted += MultipleCardWriterWorker_DoneWork;
-                    multipleCardWriteWorker.RunWorkerAsync();
-                }
-                else
-                {
-                    cancel = true;
-                    RefreshData();
-                    button1.Text = "Start";
-                    indicatorImage.Image = Properties.Resources.cardRequestBlinkOn;
-                    indicatorLabel.Text = "";
-                    button2.Enabled = true;
-                    button3.Enabled = true;
-                }
-            }
-            else if (currentId > lastId)
-            {
-                MessageBox.Show("Đã hoàn tất quá trình ghi thẻ", "Thành công", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                cancel = true;
-                RefreshData();
-                button1.Text = "Start";
-                indicatorImage.Image = Properties.Resources.cardRequestBlinkOn;
-                indicatorLabel.Text = "";
-                button2.Enabled = true;
-                button3.Enabled = true;
-            }
-
-           
-
         }
 
         public void InitializeReader()
         {
-            if (!DualCardUtils.GetInstance().Initialize())
+            if (!Duali.DualCardUtils.GetInstance().Initialize())
             {
                 if (MessageBox.Show("Vui lòng kết nối thiết bị ghi thẻ", "Không tìm thấy thiết bị ghi thẻ", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning) == DialogResult.Retry)
                 {
@@ -203,8 +384,8 @@ namespace CardWriter
                 {
                     indicatorText += ".";
                 }
-                this.Invoke(new Function(delegate () {
-
+                this.Invoke(new Action(() =>
+                {
                     indicatorLabel.Text = indicatorText;
                     indicatorImage.Image = loadingImage[index];
                     indicatorImage.Refresh();
@@ -212,225 +393,9 @@ namespace CardWriter
 
                 index++;
                 if (index >= loadingImage.Count)
-                {
                     index = 0;
-                }
                 Thread.Sleep(200);
             }
-        }
-
-        private void MultipleCardWriteWorker_DoWork(object sender, DoWorkEventArgs e)
-        {
-
-            while (DualCardUtils.GetInstance().CardDetect() != ReaderResponse.DE_OK)
-            {
-               
-                this.Invoke(new Function(delegate () {
-                    indicatorLabel.Text = "Vui lòng đặt thẻ lên thiết bị quét";
-                    indicatorImage.Image = Properties.Resources.cardRequestBlinkOn;
-                    indicatorImage.Refresh();
-                }));
-
-                Thread.Sleep(1000);
-                this.Invoke(new Function(delegate () {
-                    indicatorImage.Image = Properties.Resources.cardRequestBlinkOff;
-                    indicatorImage.Refresh();
-                }));
-
-
-            }
-
-
-            if (cancel)
-            {
-                return;
-            }
-
-            if (DualCardUtils.GetInstance().AuthMifare(DEFAULT_MIFARE_KEY_A, DATA_BLOCK, DualCardUtils.KeyType.TYPE_A))
-            {
-                isWriting = true;
-                loadingIndicatorWorker.RunWorkerAsync();
-                Thread.Sleep(800);
-                String id = hospitalCode.Text + String.Format("{0:00}", int.Parse(textBox_group.Text)) + patientCode.Text;
-                if (!DualCardUtils.GetInstance().WriteMifare(id, DATA_BLOCK))
-                {
-                    cancel = true;
-                    this.Invoke(new Function(delegate () {
-                        MessageBox.Show("Đã có lỗi xảy ra trong quá trình ghi thẻ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        indicatorLabel.Text = "Đã có lỗi xảy ra, ngưng quá trình ghi thẻ";
-                        indicatorImage.Image = Properties.Resources.card_write_error;
-                        indicatorImage.Refresh();
-                        button2.Enabled = true;
-                        button3.Enabled = true;
-                        button1.Text = "Start";
-                        indicatorImage.Image = Properties.Resources.cardRequestBlinkOn;
-                        indicatorLabel.Text = "";
-                        isWriting = false;
-                        RefreshData();
-
-                    }));
-                    return;
-                }
-            }
-            else
-            {
-                DualCardUtils.GetInstance().CardDetect();
-                if (DualCardUtils.GetInstance().AuthMifare(MIFARE_KEY_A, DATA_BLOCK, DualCardUtils.KeyType.TYPE_A))
-                {
-                    String exitingId = DualCardUtils.GetInstance().ReadMifare(DATA_BLOCK);
-                    this.Invoke(new Function(delegate () {
-                        MessageBox.Show("Thẻ đã được định danh\nID: " + exitingId, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        indicatorLabel.Text = "Thẻ đã được định danh\n ID: " + exitingId;
-                        indicatorImage.Image = Properties.Resources.card_write_error;
-                        indicatorImage.Refresh();
-                        button2.Enabled = true;
-                        button3.Enabled = true;
-                    }));
-
-                }
-                return;
-            }
-
-            if (!DualCardUtils.GetInstance().WriteMifareHex(MIFARE_KEY_A + ACCESS_BIT + DEFAULT_MIFARE_KEY_B, DATA_SECTOR_TRAILER_BLOCK))
-            {
-                cancel = true;
-                this.Invoke(new Function(delegate () {
-                    MessageBox.Show("Không thể đổi mật khẩu thẻ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    indicatorLabel.Text = "Đã có lỗi xảy ra, ngưng quá trình ghi thẻ";
-                    indicatorImage.Image = Properties.Resources.card_write_error;
-                    indicatorImage.Refresh();
-                    button2.Enabled = true;
-                    button3.Enabled = true;
-                }));
-                return;
-            }
-            this.Invoke(new Function(delegate () {
-                String filePath = ((KeyValuePair<string, Hospital>)comboBox1.SelectedItem).Key + "_log.txt";
-                File.AppendAllLines(filePath, new List<string>() {DateTime.Now.ToString("HH:mm:ss dd/MM/yyyy") + "\t|\t" + hospitalCode.Text + String.Format("{0:00}", int.Parse(textBox_group.Text)) + patientCode.Text + "\t|\tWRITE" });
-                indicatorLabel.Text = "Thành công";
-                isWriting = false;
-                indicatorImage.Image = Properties.Resources.card_write_done;
-                indicatorImage.Refresh();
-                currentId++;
-                RefreshData();
-
-            }));
-           
-        }
-
-
-        private void SingleCardWriteWorker_DoWork(object sender, DoWorkEventArgs e)
-        {
-
-            while (DualCardUtils.GetInstance().CardDetect() != ReaderResponse.DE_OK)
-            {
-                if (cancel)
-                {
-                    return;
-                }
-                this.Invoke(new Function(delegate () {
-                    indicatorLabel.Text = "Vui lòng đặt thẻ lên thiết bị quét";
-                    indicatorImage.Image = Properties.Resources.cardRequestBlinkOn;
-                    indicatorImage.Refresh();
-                }));
-
-                Thread.Sleep(1000);
-                this.Invoke(new Function(delegate () {
-                    indicatorImage.Image = Properties.Resources.cardRequestBlinkOff;
-                    indicatorImage.Refresh();
-
-                }));
-
-
-            }
-
-
-
-            if (DualCardUtils.GetInstance().AuthMifare(DEFAULT_MIFARE_KEY_A, DATA_BLOCK, DualCardUtils.KeyType.TYPE_A))
-            {
-                isWriting = true;
-                loadingIndicatorWorker.RunWorkerAsync();
-                Thread.Sleep(800);
-                String id = hospitalCode.Text + String.Format("{0:00}", int.Parse(textBox_group.Text)) + patientCode.Text;
-                if (!DualCardUtils.GetInstance().WriteMifare(id, DATA_BLOCK))
-                {
-                    cancel = true;
-                    this.Invoke(new Function(delegate () {
-                        MessageBox.Show("Đã có lỗi xảy ra trong quá trình ghi thẻ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        indicatorLabel.Text = "Đã có lỗi xảy ra, ngưng quá trình ghi thẻ";
-                        indicatorImage.Image = Properties.Resources.card_write_error;
-                        indicatorImage.Refresh();
-                        button1.Enabled = true;
-                        button2.Enabled = true;
-                        button3.Enabled = true;
-                        button1.Text = "Start";
-                        indicatorImage.Image = Properties.Resources.cardRequestBlinkOn;
-                        indicatorLabel.Text = "";
-                        isWriting = false;
-                        RefreshData();
-                    }));
-                    return;
-                }
-
-            }
-            else
-            {
-                cancel = true;
-                DualCardUtils.GetInstance().CardDetect();
-                if (DualCardUtils.GetInstance().AuthMifare(MIFARE_KEY_A, DATA_BLOCK, DualCardUtils.KeyType.TYPE_A))
-                {   
-                    String exitingId = DualCardUtils.GetInstance().ReadMifare(DATA_BLOCK);
-                    this.Invoke(new Function(delegate () {
-                        MessageBox.Show("Thẻ đã được định danh\nID: " + exitingId, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        indicatorLabel.Text = "Thẻ đã được định danh\n ID: " + exitingId;
-                        indicatorImage.Image = Properties.Resources.card_write_error;
-                        indicatorImage.Refresh();
-                        button1.Enabled = true;
-                        button2.Enabled = true;
-                        button3.Enabled = true;
-                    }));
-
-                }
-                return;
-            }
-
-            if (!DualCardUtils.GetInstance().WriteMifareHex(MIFARE_KEY_A + ACCESS_BIT + DEFAULT_MIFARE_KEY_B, DATA_SECTOR_TRAILER_BLOCK))
-            {
-                cancel = true;
-                this.Invoke(new Function(delegate () {
-                    MessageBox.Show("Không thể đổi mật khẩu thẻ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    indicatorLabel.Text = "Đã có lỗi xảy ra, ngưng quá trình ghi thẻ";
-                    indicatorImage.Image = Properties.Resources.card_write_error;
-                    indicatorImage.Refresh();
-                    button1.Enabled = true;
-                    button2.Enabled = true;
-                    button3.Enabled = true;
-                }));
-                return;
-            }
-            this.Invoke(new Function(delegate () {
-                String filePath = ((KeyValuePair<string, Hospital>)comboBox1.SelectedItem).Key + "_log.txt";
-                File.AppendAllLines(filePath, new List<string>() { DateTime.Now.ToString("HH:mm:ss dd/MM/yyyy") + "\t|\t" + hospitalCode.Text + String.Format("{0:00}", int.Parse(textBox_group.Text)) + patientCode.Text + "\t|\tWRITE_SINGLE" });
-                indicatorLabel.Text = "Thành công";
-                isWriting = false;
-                indicatorImage.Image = Properties.Resources.card_write_done;
-                indicatorImage.Refresh();
-                button1.Enabled = true;
-                button2.Enabled = true;
-                button3.Enabled = true;
-            }));
-
-            Thread.Sleep(500);
-
-            this.Invoke(new Function(delegate () {
-                RefreshData();
-                button1.Text = "Start";
-                indicatorImage.Image = Properties.Resources.cardRequestBlinkOn;
-                indicatorLabel.Text = "";
-                cancel = true;
-            }));
-
-
         }
 
         public void ShowError(String error)
@@ -446,11 +411,12 @@ namespace CardWriter
                 e.Cancel = true;
                 return;
             }
+            StopListeningSafe();
+            _reader.CardScanned -= Reader_CardScanned;
         }
 
         private void IndicatorImage_Click(object sender, EventArgs e)
         {
-
         }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -469,190 +435,133 @@ namespace CardWriter
             cardIdInput.Text = "";
         }
 
+        private bool ValidateWriteInputs(bool requireSingleCardId)
+        {
+            if (!(comboBox1.SelectedItem is KeyValuePair<string, Hospital> selectedItem) ||
+                selectedItem.Value == null ||
+                string.IsNullOrWhiteSpace(selectedItem.Value.Id))
+            {
+                MessageBox.Show("Vui lòng chọn bệnh viện hợp lệ.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            var batchCode = textBox_group.Text.Trim();
+            if (string.IsNullOrWhiteSpace(batchCode))
+            {
+                MessageBox.Show("Vui lòng nhập Lô.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBox_group.Focus();
+                return false;
+            }
+
+            int group;
+            if (!int.TryParse(batchCode, out group) || group <= 0)
+            {
+                MessageBox.Show("Lô phải là số lớn hơn 0.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBox_group.Focus();
+                return false;
+            }
+
+            if (requireSingleCardId)
+            {
+                int cardIdInteger;
+                var isNumeric = int.TryParse(cardIdInput.Text, out cardIdInteger);
+                if (!isNumeric || cardIdInteger <= 0)
+                {
+                    MessageBox.Show("Vui lòng nhập mã thẻ đúng định dạng", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    cardIdInput.Focus();
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         private void Button1_Click(object sender, EventArgs e)
         {
             if (cancel)
             {
+                if (!ValidateWriteInputs(false))
+                    return;
+
                 if (end.Text.Length == 0)
-                {
                     lastId = initialId;
-                }
                 else
-                {
                     lastId = int.Parse(end.Text);
-                }
+
                 currentId = initialId;
-                multipleCardWriteWorker = new BackgroundWorker();
-                multipleCardWriteWorker.DoWork += MultipleCardWriteWorker_DoWork;
-                multipleCardWriteWorker.RunWorkerCompleted += MultipleCardWriterWorker_DoneWork;
-                multipleCardWriteWorker.RunWorkerAsync();
                 cancel = false;
-                button1.Text = "Stop";
+                button1.Text = "DỪNG";
                 button2.Enabled = false;
                 button3.Enabled = false;
-            } else
+                _activeOperation = CardWorkOperation.BatchWrite;
+                _singleWriteTriggered = false;
+
+                _listenCts = new CancellationTokenSource();
+                _reader.StartListening(_listenCts.Token);
+            }
+            else
             {
                 cancel = true;
-                RefreshData();
-                button1.Text = "Start";
-                indicatorImage.Image = Properties.Resources.cardRequestBlinkOn;
-                indicatorLabel.Text = "";
-                button2.Enabled = true;
-                button3.Enabled = true;
+                StopListeningSafe();
+                _activeOperation = CardWorkOperation.None;
+                ResetAfterStop();
             }
-
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
             if (cancel)
             {
-                int cardIdInteger;
-                bool isNumeric = int.TryParse(cardIdInput.Text, out cardIdInteger);
-
-                if (isNumeric && cardIdInteger > 0)
-                {
-                    singleCardWriteWorker = new BackgroundWorker();
-                    singleCardWriteWorker.DoWork += SingleCardWriteWorker_DoWork;
-                    singleCardWriteWorker.RunWorkerAsync();
-                }
-                else 
-                {
-                    MessageBox.Show("Vui lòng nhập mã thẻ đúng định dạng", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (!ValidateWriteInputs(true))
                     return;
-                }
+
                 button1.Enabled = false;
+                button2.Enabled = false;
                 button3.Enabled = false;
                 cancel = false;
+                _activeOperation = CardWorkOperation.SingleWrite;
+                _singleWriteTriggered = false;
+
+                _listenCts = new CancellationTokenSource();
+                _reader.StartListening(_listenCts.Token);
                 return;
             }
 
-
             cancel = true;
+            StopListeningSafe();
+            _activeOperation = CardWorkOperation.None;
             RefreshData();
-            button1.Text = "Start";
+            button1.Text = "GHI";
             indicatorImage.Image = Properties.Resources.cardRequestBlinkOn;
             indicatorLabel.Text = "";
+            button1.Enabled = true;
+            button2.Enabled = true;
+            button3.Enabled = true;
         }
 
         private void Button3_Click(object sender, EventArgs e)
         {
             if (cancel)
             {
-                cardClearWorker = new BackgroundWorker();
-                cardClearWorker.DoWork += CardClearWorker_DoWork;
-                cardClearWorker.RunWorkerAsync();
                 button1.Enabled = false;
                 button2.Enabled = false;
                 cancel = false;
+                _activeOperation = CardWorkOperation.ClearCard;
+
+                _listenCts = new CancellationTokenSource();
+                _reader.StartListening(_listenCts.Token);
                 return;
             }
 
             cancel = true;
+            StopListeningSafe();
+            _activeOperation = CardWorkOperation.None;
             RefreshData();
-            button1.Text = "Start";
+            button1.Text = "GHI";
             indicatorImage.Image = Properties.Resources.cardRequestBlinkOn;
             indicatorLabel.Text = "";
-        
-
-    }
-
-        private void CardClearWorker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            while (DualCardUtils.GetInstance().CardDetect() != ReaderResponse.DE_OK)
-            {
-                if (cancel)
-                {
-                    return;
-                }
-                this.Invoke(new Function(delegate () {
-                    indicatorLabel.Text = "Vui lòng đặt thẻ lên thiết bị quét";
-                    indicatorImage.Image = Properties.Resources.cardRequestBlinkOn;
-                    indicatorImage.Refresh();
-                }));
-
-                Thread.Sleep(1000);
-                this.Invoke(new Function(delegate () {
-                    indicatorImage.Image = Properties.Resources.cardRequestBlinkOff;
-                    indicatorImage.Refresh();
-
-                }));
-
-
-            }
-
-
-
-            if (DualCardUtils.GetInstance().AuthMifare(MIFARE_KEY_A, DATA_BLOCK, DualCardUtils.KeyType.TYPE_A))
-            {
-                isWriting = true;
-                loadingIndicatorWorker.RunWorkerAsync();
-                Thread.Sleep(800);
-                String id = hospitalCode.Text + cardIdInput;
-                String exitingId = DualCardUtils.GetInstance().ReadMifare(DATA_BLOCK);
-                this.Invoke(new Function(delegate () {
-                    String filePath = ((KeyValuePair<string, Hospital>)comboBox1.SelectedItem).Key + "_log.txt";
-                    File.AppendAllLines(filePath, new List<string>() { DateTime.Now.ToString("HH:mm:ss dd/MM/yyyy") + "\t|\t" + exitingId + "|\tCLEAR" });
-                }));
-
-
-                if (!DualCardUtils.GetInstance().WriteMifareHex("00000000000000000000000000000000", DATA_BLOCK))
-                {
-                    cancel = true;
-                    this.Invoke(new Function(delegate () {
-                        MessageBox.Show("Đã có lỗi xảy ra trong quá trình ghi thẻ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        indicatorLabel.Text = "Đã có lỗi xảy ra, ngưng quá trình ghi thẻ";
-                        indicatorImage.Image = Properties.Resources.card_write_error;
-                        indicatorImage.Refresh();
-                        button1.Enabled = true;
-                        button2.Enabled = true;
-                        button3.Enabled = true;
-
-                    }));
-                    return;
-                }
-
-                if (!DualCardUtils.GetInstance().WriteMifareHex(DEFAULT_MIFARE_KEY_A + ACCESS_BIT + DEFAULT_MIFARE_KEY_B, DATA_SECTOR_TRAILER_BLOCK))
-                {
-                    cancel = true;
-                    this.Invoke(new Function(delegate () {
-                        MessageBox.Show("Không thể đổi mật khẩu thẻ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        indicatorLabel.Text = "Đã có lỗi xảy ra, ngưng quá trình ghi thẻ";
-                        indicatorImage.Image = Properties.Resources.card_write_error;
-                        indicatorImage.Refresh();
-                        button1.Enabled = true;
-                        button2.Enabled = true;
-                        button3.Enabled = true;
-
-                    }));
-                    return;
-                }
-            }
-
-            
-            this.Invoke(new Function(delegate () {
-                indicatorLabel.Text = "Thành công";
-                isWriting = false;
-                indicatorImage.Image = Properties.Resources.card_write_done;
-                indicatorImage.Refresh();
-                RefreshData();
-                button1.Enabled = true;
-                button2.Enabled = true;
-                button3.Enabled = true;
-
-            }));
-
-            Thread.Sleep(500);
-
-            this.Invoke(new Function(delegate () {
-                RefreshData();
-
-                button1.Text = "Start";
-                indicatorImage.Image = Properties.Resources.cardRequestBlinkOn;
-                indicatorLabel.Text = "";
-                cancel = true;
-            }));
-           
+            button1.Enabled = true;
+            button2.Enabled = true;
         }
 
         private void CardIdInput_TextChanged(object sender, EventArgs e)
@@ -666,13 +575,12 @@ namespace CardWriter
         private void CardIdInput_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (Char.IsDigit(e.KeyChar) || Char.IsControl(e.KeyChar))
-            { 
+            {
                 e.Handled = false;
                 return;
             }
 
-            e.Handled = true; 
-            return;
+            e.Handled = true;
         }
 
         private void TextBox_group_TextChanged(object sender, EventArgs e)
@@ -680,12 +588,12 @@ namespace CardWriter
             if (textBox_group.Text.Length > 2 && textBox_group.Text.StartsWith("0"))
             {
                 textBox_group.Text = textBox_group.Text.Remove(0, 1);
-            } else if (textBox_group.Text.Length > 2 && !textBox_group.Text.StartsWith("0"))
+            }
+            else if (textBox_group.Text.Length > 2 && !textBox_group.Text.StartsWith("0"))
             {
                 MessageBox.Show("Chỉ nhập tối đa 2 chữ số", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBox_group.Text = "99";
             }
-
 
             if (textBox_group.Text == "" || int.Parse(textBox_group.Text) == 0)
             {
@@ -697,7 +605,6 @@ namespace CardWriter
 
         private void TextBox_group_KeyPress(object sender, KeyPressEventArgs e)
         {
-           
             if (Char.IsDigit(e.KeyChar) || Char.IsControl(e.KeyChar))
             {
                 e.Handled = false;
@@ -705,12 +612,10 @@ namespace CardWriter
             }
 
             e.Handled = true;
-            return;
         }
 
         private void comboBox1_Format(object sender, ListControlConvertEventArgs e)
         {
-            // Assuming your class called Employee , and Firstname & Lastname are the fields
             string hospitalName = ((KeyValuePair<string, Hospital>)e.ListItem).Value.Name;
             e.Value = hospitalName;
         }

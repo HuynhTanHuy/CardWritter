@@ -75,3 +75,9 @@ C:\Users\YangTV\Downloads\tekmedi-card-writter-master\Duali\obj\Debug\Duali.cspr
 C:\Users\YangTV\Downloads\tekmedi-card-writter-master\Duali\obj\Debug\Duali.csproj.Up2Date
 C:\Users\YangTV\Downloads\tekmedi-card-writter-master\Duali\obj\Debug\Duali.dll
 C:\Users\YangTV\Downloads\tekmedi-card-writter-master\Duali\obj\Debug\Duali.pdb
+E:\tekmedi-card-writter-master\Duali\bin\Debug\Duali.dll
+E:\tekmedi-card-writter-master\Duali\bin\Debug\Duali.pdb
+E:\tekmedi-card-writter-master\Duali\obj\Debug\Duali.csproj.AssemblyReference.cache
+E:\tekmedi-card-writter-master\Duali\obj\Debug\Duali.csproj.CoreCompileInputs.cache
+E:\tekmedi-card-writter-master\Duali\obj\Debug\Duali.dll
+E:\tekmedi-card-writter-master\Duali\obj\Debug\Duali.pdb

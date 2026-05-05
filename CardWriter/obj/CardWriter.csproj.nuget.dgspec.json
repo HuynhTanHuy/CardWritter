@@ -58,6 +58,11 @@
             }
           }
         }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        }
       }
     },
     "E:\\tekmedi-card-writter-master\\Duali\\Duali.csproj": {
@@ -105,6 +110,20 @@
               "version": "[3.1.10729.1, )"
             }
           }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-arm64": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
         }
       }
     }
