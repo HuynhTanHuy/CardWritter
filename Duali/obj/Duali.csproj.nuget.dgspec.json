@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\YangTV\\Downloads\\tekmedi-card-writter-master\\Duali\\Duali.csproj": {}
+    "E:\\tekmedi-card-writter-master\\Duali\\Duali.csproj": {}
   },
   "projects": {
-    "C:\\Users\\YangTV\\Downloads\\tekmedi-card-writter-master\\Duali\\Duali.csproj": {
+    "E:\\tekmedi-card-writter-master\\Duali\\Duali.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\YangTV\\Downloads\\tekmedi-card-writter-master\\Duali\\Duali.csproj",
+        "projectUniqueName": "E:\\tekmedi-card-writter-master\\Duali\\Duali.csproj",
         "projectName": "Duali",
-        "projectPath": "C:\\Users\\YangTV\\Downloads\\tekmedi-card-writter-master\\Duali\\Duali.csproj",
+        "projectPath": "E:\\tekmedi-card-writter-master\\Duali\\Duali.csproj",
         "packagesPath": "C:\\Users\\YangTV\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\YangTV\\Downloads\\tekmedi-card-writter-master\\Duali\\obj\\",
+        "outputPath": "E:\\tekmedi-card-writter-master\\Duali\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "UsingMicrosoftNETSdk": false,
@@ -49,20 +49,6 @@
               "version": "[3.1.10729.1, )"
             }
           }
-        }
-      },
-      "runtimes": {
-        "win": {
-          "#import": []
-        },
-        "win-arm64": {
-          "#import": []
-        },
-        "win-x64": {
-          "#import": []
-        },
-        "win-x86": {
-          "#import": []
         }
       }
     }
