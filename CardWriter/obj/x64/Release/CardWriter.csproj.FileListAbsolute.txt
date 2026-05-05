@@ -1,0 +1,51 @@
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\bin\x64\Release\CardWriter.exe.config
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\bin\x64\Release\CardWriter.exe
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\bin\x64\Release\CardWriter.pdb
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\bin\x64\Release\Duali.dll
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\bin\x64\Release\Duali.pdb
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\obj\x64\Release\CardWriter.csprojAssemblyReference.cache
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\obj\x64\Release\CardWriter.CardProcessForm.resources
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\obj\x64\Release\CardWriter.Properties.Resources.resources
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\obj\x64\Release\CardWriter.csproj.GenerateResource.cache
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\obj\x64\Release\CardWriter.csproj.CoreCompileInputs.cache
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\obj\x64\Release\CardWriter.csproj.CopyComplete
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\obj\x64\Release\CardWriter.exe
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\obj\x64\Release\CardWriter.pdb
+E:\MyWork\Company\CardWriter_17022020\CardWriter\CardWriter\CardWriter\bin\x64\Release\CardWriter.exe.config
+E:\MyWork\Company\CardWriter_17022020\CardWriter\CardWriter\CardWriter\bin\x64\Release\CardWriter.exe
+E:\MyWork\Company\CardWriter_17022020\CardWriter\CardWriter\CardWriter\bin\x64\Release\CardWriter.pdb
+E:\MyWork\Company\CardWriter_17022020\CardWriter\CardWriter\CardWriter\bin\x64\Release\Duali.dll
+E:\MyWork\Company\CardWriter_17022020\CardWriter\CardWriter\CardWriter\bin\x64\Release\Duali.pdb
+E:\MyWork\Company\CardWriter_17022020\CardWriter\CardWriter\CardWriter\obj\x64\Release\CardWriter.csprojAssemblyReference.cache
+E:\MyWork\Company\CardWriter_17022020\CardWriter\CardWriter\CardWriter\obj\x64\Release\CardWriter.CardProcessForm.resources
+E:\MyWork\Company\CardWriter_17022020\CardWriter\CardWriter\CardWriter\obj\x64\Release\CardWriter.Properties.Resources.resources
+E:\MyWork\Company\CardWriter_17022020\CardWriter\CardWriter\CardWriter\obj\x64\Release\CardWriter.csproj.GenerateResource.cache
+E:\MyWork\Company\CardWriter_17022020\CardWriter\CardWriter\CardWriter\obj\x64\Release\CardWriter.csproj.CopyComplete
+E:\MyWork\Company\CardWriter_17022020\CardWriter\CardWriter\CardWriter\obj\x64\Release\CardWriter.exe
+E:\MyWork\Company\CardWriter_17022020\CardWriter\CardWriter\CardWriter\obj\x64\Release\CardWriter.pdb
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\CardWriter\bin\x64\Release\CardWriter.exe.config
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\CardWriter\bin\x64\Release\CardWriter.exe
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\CardWriter\bin\x64\Release\CardWriter.pdb
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\CardWriter\bin\x64\Release\Duali.dll
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\CardWriter\bin\x64\Release\Duali.pdb
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\CardWriter\obj\x64\Release\CardWriter.csprojAssemblyReference.cache
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\CardWriter\obj\x64\Release\CardWriter.CardProcessForm.resources
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\CardWriter\obj\x64\Release\CardWriter.Properties.Resources.resources
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\CardWriter\obj\x64\Release\CardWriter.csproj.GenerateResource.cache
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\CardWriter\obj\x64\Release\CardWriter.csproj.CopyComplete
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\CardWriter\obj\x64\Release\CardWriter.exe
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\CardWriter\obj\x64\Release\CardWriter.pdb
+C:\Users\razor\Desktop\workspace\utilities\tekmedi-card-writter\CardWriter\bin\x64\Release\CardWriter.exe.config
+C:\Users\razor\Desktop\workspace\utilities\tekmedi-card-writter\CardWriter\bin\x64\Release\CardWriter.exe
+C:\Users\razor\Desktop\workspace\utilities\tekmedi-card-writter\CardWriter\bin\x64\Release\CardWriter.pdb
+C:\Users\razor\Desktop\workspace\utilities\tekmedi-card-writter\CardWriter\bin\x64\Release\Newtonsoft.Json.dll
+C:\Users\razor\Desktop\workspace\utilities\tekmedi-card-writter\CardWriter\bin\x64\Release\Zen.Barcode.Core.dll
+C:\Users\razor\Desktop\workspace\utilities\tekmedi-card-writter\CardWriter\bin\x64\Release\Duali.dll
+C:\Users\razor\Desktop\workspace\utilities\tekmedi-card-writter\CardWriter\bin\x64\Release\Duali.pdb
+C:\Users\razor\Desktop\workspace\utilities\tekmedi-card-writter\CardWriter\obj\x64\Release\CardWriter.csproj.AssemblyReference.cache
+C:\Users\razor\Desktop\workspace\utilities\tekmedi-card-writter\CardWriter\obj\x64\Release\CardWriter.CardProcessForm.resources
+C:\Users\razor\Desktop\workspace\utilities\tekmedi-card-writter\CardWriter\obj\x64\Release\CardWriter.Properties.Resources.resources
+C:\Users\razor\Desktop\workspace\utilities\tekmedi-card-writter\CardWriter\obj\x64\Release\CardWriter.csproj.GenerateResource.cache
+C:\Users\razor\Desktop\workspace\utilities\tekmedi-card-writter\CardWriter\obj\x64\Release\CardWriter.csproj.CoreCompileInputs.cache
+C:\Users\razor\Desktop\workspace\utilities\tekmedi-card-writter\CardWriter\obj\x64\Release\CardWriter.exe
+C:\Users\razor\Desktop\workspace\utilities\tekmedi-card-writter\CardWriter\obj\x64\Release\CardWriter.pdb

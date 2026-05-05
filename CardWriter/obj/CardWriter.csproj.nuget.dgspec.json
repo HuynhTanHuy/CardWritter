@@ -1,0 +1,140 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\YangTV\\Downloads\\tekmedi-card-writter-master\\CardWriter\\CardWriter.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\YangTV\\Downloads\\tekmedi-card-writter-master\\CardWriter\\CardWriter.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\YangTV\\Downloads\\tekmedi-card-writter-master\\CardWriter\\CardWriter.csproj",
+        "projectName": "CardWriter",
+        "projectPath": "C:\\Users\\YangTV\\Downloads\\tekmedi-card-writter-master\\CardWriter\\CardWriter.csproj",
+        "packagesPath": "C:\\Users\\YangTV\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\YangTV\\Downloads\\tekmedi-card-writter-master\\CardWriter\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "UsingMicrosoftNETSdk": false,
+        "configFilePaths": [
+          "C:\\Users\\YangTV\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "C:\\Users\\YangTV\\Downloads\\tekmedi-card-writter-master\\Duali\\Duali.csproj": {
+                "projectPath": "C:\\Users\\YangTV\\Downloads\\tekmedi-card-writter-master\\Duali\\Duali.csproj"
+              }
+            }
+          }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "Zen.Barcode.Core.Code128": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Zen.Barcode.Rendering.Framework": {
+              "target": "Package",
+              "version": "[3.1.10729.1, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-arm64": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    },
+    "C:\\Users\\YangTV\\Downloads\\tekmedi-card-writter-master\\Duali\\Duali.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\YangTV\\Downloads\\tekmedi-card-writter-master\\Duali\\Duali.csproj",
+        "projectName": "Duali",
+        "projectPath": "C:\\Users\\YangTV\\Downloads\\tekmedi-card-writter-master\\Duali\\Duali.csproj",
+        "packagesPath": "C:\\Users\\YangTV\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\YangTV\\Downloads\\tekmedi-card-writter-master\\Duali\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "UsingMicrosoftNETSdk": false,
+        "configFilePaths": [
+          "C:\\Users\\YangTV\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net461"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net461": {
+            "projectReferences": {}
+          }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net461": {
+          "dependencies": {
+            "Zen.Barcode.Core.Code128": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Zen.Barcode.Rendering.Framework": {
+              "target": "Package",
+              "version": "[3.1.10729.1, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-arm64": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\bin\Release\CardWriter.exe.config
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\bin\Release\CardWriter.exe
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\bin\Release\CardWriter.pdb
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\bin\Release\Duali.dll
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\bin\Release\Duali.pdb
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\obj\Release\CardWriter.csprojAssemblyReference.cache
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\obj\Release\CardWriter.CardProcessForm.resources
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\obj\Release\CardWriter.Properties.Resources.resources
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\obj\Release\CardWriter.csproj.GenerateResource.cache
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\obj\Release\CardWriter.csproj.CoreCompileInputs.cache
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\obj\Release\CardWriter.csproj.CopyComplete
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\obj\Release\CardWriter.exe
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\obj\Release\CardWriter.pdb

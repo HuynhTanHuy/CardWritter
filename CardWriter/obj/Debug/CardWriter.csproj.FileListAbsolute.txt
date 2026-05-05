@@ -1,0 +1,64 @@
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\bin\Debug\CardWriter.exe.config
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\bin\Debug\CardWriter.exe
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\bin\Debug\CardWriter.pdb
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\bin\Debug\Duali.dll
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\bin\Debug\Duali.pdb
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\obj\Debug\CardWriter.CardProcessForm.resources
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\obj\Debug\CardWriter.Properties.Resources.resources
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\obj\Debug\CardWriter.csproj.GenerateResource.cache
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\obj\Debug\CardWriter.csproj.CoreCompileInputs.cache
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\obj\Debug\CardWriter.csproj.CopyComplete
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\obj\Debug\CardWriter.exe
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\obj\Debug\CardWriter.pdb
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\CardWriter\obj\Debug\CardWriter.csprojAssemblyReference.cache
+C:\Users\anhnt\Desktop\CardWriter\CardWriter\CardWriter\bin\Debug\CardWriter.exe.config
+C:\Users\anhnt\Desktop\CardWriter\CardWriter\CardWriter\bin\Debug\CardWriter.exe
+C:\Users\anhnt\Desktop\CardWriter\CardWriter\CardWriter\bin\Debug\CardWriter.pdb
+C:\Users\anhnt\Desktop\CardWriter\CardWriter\CardWriter\bin\Debug\Duali.dll
+C:\Users\anhnt\Desktop\CardWriter\CardWriter\CardWriter\bin\Debug\Duali.pdb
+C:\Users\anhnt\Desktop\CardWriter\CardWriter\CardWriter\obj\Debug\CardWriter.csprojAssemblyReference.cache
+C:\Users\anhnt\Desktop\CardWriter\CardWriter\CardWriter\obj\Debug\CardWriter.CardProcessForm.resources
+C:\Users\anhnt\Desktop\CardWriter\CardWriter\CardWriter\obj\Debug\CardWriter.Properties.Resources.resources
+C:\Users\anhnt\Desktop\CardWriter\CardWriter\CardWriter\obj\Debug\CardWriter.csproj.GenerateResource.cache
+C:\Users\anhnt\Desktop\CardWriter\CardWriter\CardWriter\obj\Debug\CardWriter.csproj.CopyComplete
+C:\Users\anhnt\Desktop\CardWriter\CardWriter\CardWriter\obj\Debug\CardWriter.exe
+C:\Users\anhnt\Desktop\CardWriter\CardWriter\CardWriter\obj\Debug\CardWriter.pdb
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\CardWriter\bin\Debug\CardWriter.exe.config
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\CardWriter\bin\Debug\CardWriter.exe
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\CardWriter\bin\Debug\CardWriter.pdb
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\CardWriter\bin\Debug\Duali.dll
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\CardWriter\bin\Debug\Duali.pdb
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\CardWriter\obj\Debug\CardWriter.csprojAssemblyReference.cache
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\CardWriter\obj\Debug\CardWriter.CardProcessForm.resources
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\CardWriter\obj\Debug\CardWriter.Properties.Resources.resources
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\CardWriter\obj\Debug\CardWriter.csproj.GenerateResource.cache
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\CardWriter\obj\Debug\CardWriter.csproj.CopyComplete
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\CardWriter\obj\Debug\CardWriter.exe
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\CardWriter\obj\Debug\CardWriter.pdb
+D:\CardWriter_19022020\CardWriter_19022020\CardWriter\CardWriter\CardWriter\bin\Debug\CardWriter.exe.config
+D:\CardWriter_19022020\CardWriter_19022020\CardWriter\CardWriter\CardWriter\bin\Debug\CardWriter.exe
+D:\CardWriter_19022020\CardWriter_19022020\CardWriter\CardWriter\CardWriter\bin\Debug\CardWriter.pdb
+D:\CardWriter_19022020\CardWriter_19022020\CardWriter\CardWriter\CardWriter\bin\Debug\Duali.dll
+D:\CardWriter_19022020\CardWriter_19022020\CardWriter\CardWriter\CardWriter\bin\Debug\Duali.pdb
+D:\CardWriter_19022020\CardWriter_19022020\CardWriter\CardWriter\CardWriter\obj\Debug\CardWriter.csprojAssemblyReference.cache
+D:\CardWriter_19022020\CardWriter_19022020\CardWriter\CardWriter\CardWriter\obj\Debug\CardWriter.CardProcessForm.resources
+D:\CardWriter_19022020\CardWriter_19022020\CardWriter\CardWriter\CardWriter\obj\Debug\CardWriter.Properties.Resources.resources
+D:\CardWriter_19022020\CardWriter_19022020\CardWriter\CardWriter\CardWriter\obj\Debug\CardWriter.csproj.GenerateResource.cache
+D:\CardWriter_19022020\CardWriter_19022020\CardWriter\CardWriter\CardWriter\obj\Debug\CardWriter.csproj.CopyComplete
+D:\CardWriter_19022020\CardWriter_19022020\CardWriter\CardWriter\CardWriter\obj\Debug\CardWriter.exe
+D:\CardWriter_19022020\CardWriter_19022020\CardWriter\CardWriter\CardWriter\obj\Debug\CardWriter.pdb
+C:\Users\YangTV\Downloads\tekmedi-card-writter-master\CardWriter\obj\Debug\CardWriter.exe
+C:\Users\YangTV\Downloads\tekmedi-card-writter-master\CardWriter\obj\Debug\CardWriter.pdb
+C:\Users\YangTV\Downloads\tekmedi-card-writter-master\CardWriter\bin\Debug\CardWriter.exe.config
+C:\Users\YangTV\Downloads\tekmedi-card-writter-master\CardWriter\bin\Debug\CardWriter.exe
+C:\Users\YangTV\Downloads\tekmedi-card-writter-master\CardWriter\bin\Debug\CardWriter.pdb
+C:\Users\YangTV\Downloads\tekmedi-card-writter-master\CardWriter\bin\Debug\Newtonsoft.Json.dll
+C:\Users\YangTV\Downloads\tekmedi-card-writter-master\CardWriter\bin\Debug\Zen.Barcode.Core.dll
+C:\Users\YangTV\Downloads\tekmedi-card-writter-master\CardWriter\bin\Debug\Duali.dll
+C:\Users\YangTV\Downloads\tekmedi-card-writter-master\CardWriter\bin\Debug\Duali.pdb
+C:\Users\YangTV\Downloads\tekmedi-card-writter-master\CardWriter\obj\Debug\CardWriter.csproj.AssemblyReference.cache
+C:\Users\YangTV\Downloads\tekmedi-card-writter-master\CardWriter\obj\Debug\CardWriter.CardProcessForm.resources
+C:\Users\YangTV\Downloads\tekmedi-card-writter-master\CardWriter\obj\Debug\CardWriter.Properties.Resources.resources
+C:\Users\YangTV\Downloads\tekmedi-card-writter-master\CardWriter\obj\Debug\CardWriter.csproj.GenerateResource.cache
+C:\Users\YangTV\Downloads\tekmedi-card-writter-master\CardWriter\obj\Debug\CardWriter.csproj.CoreCompileInputs.cache
+C:\Users\YangTV\Downloads\tekmedi-card-writter-master\CardWriter\obj\Debug\CardWriter.csproj.Up2Date

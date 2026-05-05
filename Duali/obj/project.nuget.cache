@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "KOOI6C4pUQc=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\YangTV\\Downloads\\tekmedi-card-writter-master\\Duali\\Duali.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\YangTV\\.nuget\\packages\\zen.barcode.core.code128\\3.1.0\\zen.barcode.core.code128.3.1.0.nupkg.sha512",
+    "C:\\Users\\YangTV\\.nuget\\packages\\zen.barcode.rendering.framework\\3.1.10729.1\\zen.barcode.rendering.framework.3.1.10729.1.nupkg.sha512"
+  ],
+  "logs": []
+}

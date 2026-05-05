@@ -1,0 +1,60 @@
+F:\User\Desktop\dolphin\CardWriter\CardWriter\Duali\bin\x64\Debug\Duali.dll
+F:\User\Desktop\dolphin\CardWriter\CardWriter\Duali\bin\x64\Debug\Duali.pdb
+F:\User\Desktop\dolphin\CardWriter\CardWriter\Duali\obj\x64\Debug\Duali.csprojAssemblyReference.cache
+F:\User\Desktop\dolphin\CardWriter\CardWriter\Duali\obj\x64\Debug\Duali.csproj.CoreCompileInputs.cache
+F:\User\Desktop\dolphin\CardWriter\CardWriter\Duali\obj\x64\Debug\Duali.dll
+F:\User\Desktop\dolphin\CardWriter\CardWriter\Duali\obj\x64\Debug\Duali.pdb
+F:\User\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\Duali\bin\x64\Debug\Duali.dll
+F:\User\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\Duali\bin\x64\Debug\Duali.pdb
+F:\User\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\Duali\obj\x64\Debug\Duali.csprojAssemblyReference.cache
+F:\User\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\Duali\obj\x64\Debug\Duali.csproj.CoreCompileInputs.cache
+F:\User\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\Duali\obj\x64\Debug\Duali.dll
+F:\User\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\Duali\obj\x64\Debug\Duali.pdb
+C:\Users\razor\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\Duali\bin\x64\Debug\Duali.dll
+C:\Users\razor\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\Duali\bin\x64\Debug\Duali.pdb
+C:\Users\razor\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\Duali\obj\x64\Debug\Duali.csprojAssemblyReference.cache
+C:\Users\razor\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\Duali\obj\x64\Debug\Duali.csproj.CoreCompileInputs.cache
+C:\Users\razor\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\Duali\obj\x64\Debug\Duali.dll
+C:\Users\razor\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\Duali\obj\x64\Debug\Duali.pdb
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\Duali\bin\x64\Debug\Duali.dll
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\Duali\bin\x64\Debug\Duali.pdb
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\Duali\obj\x64\Debug\Duali.csprojAssemblyReference.cache
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\Duali\obj\x64\Debug\Duali.csproj.CoreCompileInputs.cache
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\Duali\obj\x64\Debug\Duali.dll
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\Duali\obj\x64\Debug\Duali.pdb
+C:\Users\ACER\Desktop\Bat ngo chua\CardWriter\CardWriter\Duali\bin\x64\Debug\Duali.dll
+C:\Users\ACER\Desktop\Bat ngo chua\CardWriter\CardWriter\Duali\bin\x64\Debug\Duali.pdb
+C:\Users\ACER\Desktop\Bat ngo chua\CardWriter\CardWriter\Duali\obj\x64\Debug\Duali.csprojAssemblyReference.cache
+C:\Users\ACER\Desktop\Bat ngo chua\CardWriter\CardWriter\Duali\obj\x64\Debug\Duali.dll
+C:\Users\ACER\Desktop\Bat ngo chua\CardWriter\CardWriter\Duali\obj\x64\Debug\Duali.pdb
+C:\Users\anhnt\Desktop\CardWriter\CardWriter\Duali\bin\x64\Debug\Duali.dll
+C:\Users\anhnt\Desktop\CardWriter\CardWriter\Duali\bin\x64\Debug\Duali.pdb
+C:\Users\anhnt\Desktop\CardWriter\CardWriter\Duali\obj\x64\Debug\Duali.dll
+C:\Users\anhnt\Desktop\CardWriter\CardWriter\Duali\obj\x64\Debug\Duali.pdb
+E:\MyWork\Company\CardWriter_17022020\CardWriter\CardWriter\Duali\bin\x64\Debug\Duali.dll
+E:\MyWork\Company\CardWriter_17022020\CardWriter\CardWriter\Duali\bin\x64\Debug\Duali.pdb
+E:\MyWork\Company\CardWriter_17022020\CardWriter\CardWriter\Duali\obj\x64\Debug\Duali.csprojAssemblyReference.cache
+E:\MyWork\Company\CardWriter_17022020\CardWriter\CardWriter\Duali\obj\x64\Debug\Duali.dll
+E:\MyWork\Company\CardWriter_17022020\CardWriter\CardWriter\Duali\obj\x64\Debug\Duali.pdb
+C:\Users\Admin\Desktop\workspace\bvcr\tnb-win-app\Source\Printer\CardWriter_19022020\CardWriter\CardWriter\Duali\bin\x64\Debug\Duali.dll
+C:\Users\Admin\Desktop\workspace\bvcr\tnb-win-app\Source\Printer\CardWriter_19022020\CardWriter\CardWriter\Duali\bin\x64\Debug\Duali.pdb
+C:\Users\Admin\Desktop\workspace\bvcr\tnb-win-app\Source\Printer\CardWriter_19022020\CardWriter\CardWriter\Duali\bin\x64\Debug\Zen.Barcode.Core.dll
+C:\Users\Admin\Desktop\workspace\bvcr\tnb-win-app\Source\Printer\CardWriter_19022020\CardWriter\CardWriter\Duali\obj\x64\Debug\Duali.csprojAssemblyReference.cache
+C:\Users\Admin\Desktop\workspace\bvcr\tnb-win-app\Source\Printer\CardWriter_19022020\CardWriter\CardWriter\Duali\obj\x64\Debug\Duali.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\workspace\bvcr\tnb-win-app\Source\Printer\CardWriter_19022020\CardWriter\CardWriter\Duali\obj\x64\Debug\Duali.csproj.CopyComplete
+C:\Users\Admin\Desktop\workspace\bvcr\tnb-win-app\Source\Printer\CardWriter_19022020\CardWriter\CardWriter\Duali\obj\x64\Debug\Duali.dll
+C:\Users\Admin\Desktop\workspace\bvcr\tnb-win-app\Source\Printer\CardWriter_19022020\CardWriter\CardWriter\Duali\obj\x64\Debug\Duali.pdb
+C:\Users\razor\Desktop\workspace\bvcr\tek.btc.tnb-printer\Duali\bin\x64\Debug\Duali.dll
+C:\Users\razor\Desktop\workspace\bvcr\tek.btc.tnb-printer\Duali\bin\x64\Debug\Duali.pdb
+C:\Users\razor\Desktop\workspace\bvcr\tek.btc.tnb-printer\Duali\bin\x64\Debug\Zen.Barcode.Core.dll
+C:\Users\razor\Desktop\workspace\bvcr\tek.btc.tnb-printer\Duali\obj\x64\Debug\Duali.csproj.CoreCompileInputs.cache
+C:\Users\razor\Desktop\workspace\bvcr\tek.btc.tnb-printer\Duali\obj\x64\Debug\Duali.csproj.CopyComplete
+C:\Users\razor\Desktop\workspace\bvcr\tek.btc.tnb-printer\Duali\obj\x64\Debug\Duali.dll
+C:\Users\razor\Desktop\workspace\bvcr\tek.btc.tnb-printer\Duali\obj\x64\Debug\Duali.pdb
+C:\Users\razor\Desktop\workspace\utilities\tekmedi-card-writter\Duali\bin\x64\Debug\Duali.dll
+C:\Users\razor\Desktop\workspace\utilities\tekmedi-card-writter\Duali\bin\x64\Debug\Duali.pdb
+C:\Users\razor\Desktop\workspace\utilities\tekmedi-card-writter\Duali\bin\x64\Debug\Zen.Barcode.Core.dll
+C:\Users\razor\Desktop\workspace\utilities\tekmedi-card-writter\Duali\obj\x64\Debug\Duali.csproj.AssemblyReference.cache
+C:\Users\razor\Desktop\workspace\utilities\tekmedi-card-writter\Duali\obj\x64\Debug\Duali.csproj.CoreCompileInputs.cache
+C:\Users\razor\Desktop\workspace\utilities\tekmedi-card-writter\Duali\obj\x64\Debug\Duali.dll
+C:\Users\razor\Desktop\workspace\utilities\tekmedi-card-writter\Duali\obj\x64\Debug\Duali.pdb

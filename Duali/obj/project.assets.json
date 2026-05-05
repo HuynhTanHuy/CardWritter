@@ -1,0 +1,209 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.6.1": {
+      "Zen.Barcode.Core.Code128/3.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Zen.Barcode.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Zen.Barcode.Core.dll": {}
+        }
+      },
+      "Zen.Barcode.Rendering.Framework/3.1.10729.1": {
+        "type": "package",
+        "compile": {
+          "lib/Zen.Barcode.Core.dll": {}
+        },
+        "runtime": {
+          "lib/Zen.Barcode.Core.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.6.1/win": {
+      "Zen.Barcode.Core.Code128/3.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Zen.Barcode.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Zen.Barcode.Core.dll": {}
+        }
+      },
+      "Zen.Barcode.Rendering.Framework/3.1.10729.1": {
+        "type": "package",
+        "compile": {
+          "lib/Zen.Barcode.Core.dll": {}
+        },
+        "runtime": {
+          "lib/Zen.Barcode.Core.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.6.1/win-arm64": {
+      "Zen.Barcode.Core.Code128/3.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Zen.Barcode.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Zen.Barcode.Core.dll": {}
+        }
+      },
+      "Zen.Barcode.Rendering.Framework/3.1.10729.1": {
+        "type": "package",
+        "compile": {
+          "lib/Zen.Barcode.Core.dll": {}
+        },
+        "runtime": {
+          "lib/Zen.Barcode.Core.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.6.1/win-x64": {
+      "Zen.Barcode.Core.Code128/3.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Zen.Barcode.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Zen.Barcode.Core.dll": {}
+        }
+      },
+      "Zen.Barcode.Rendering.Framework/3.1.10729.1": {
+        "type": "package",
+        "compile": {
+          "lib/Zen.Barcode.Core.dll": {}
+        },
+        "runtime": {
+          "lib/Zen.Barcode.Core.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.6.1/win-x86": {
+      "Zen.Barcode.Core.Code128/3.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Zen.Barcode.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Zen.Barcode.Core.dll": {}
+        }
+      },
+      "Zen.Barcode.Rendering.Framework/3.1.10729.1": {
+        "type": "package",
+        "compile": {
+          "lib/Zen.Barcode.Core.dll": {}
+        },
+        "runtime": {
+          "lib/Zen.Barcode.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Zen.Barcode.Core.Code128/3.1.0": {
+      "sha512": "Fi/d1B6C51t6Wx5GLLX1pvPrzXARMebACY+/AXZ4PYHL57Rt7jei/JTOLyIgTlaW9GDBQaoPeiaMF1uVqEwIlw==",
+      "type": "package",
+      "path": "zen.barcode.core.code128/3.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/Zen.Barcode.Core.dll",
+        "lib/net40/Zen.Barcode.Core.dll",
+        "lib/net45/Zen.Barcode.Core.dll",
+        "zen.barcode.core.code128.3.1.0.nupkg.sha512",
+        "zen.barcode.core.code128.nuspec"
+      ]
+    },
+    "Zen.Barcode.Rendering.Framework/3.1.10729.1": {
+      "sha512": "84Oi15A4V8eOY7BA51iLhbThxB/bGSxNS0baxbWfhpBcZoF5NBRR4QHrEbDg2VoPI+s2DA82qaO1Z2/TMDo7sg==",
+      "type": "package",
+      "path": "zen.barcode.rendering.framework/3.1.10729.1",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.txt",
+        "lib/Zen.Barcode.Core.dll",
+        "tools/BarcodeRender.exe",
+        "tools/BarcodeRender.exe.config",
+        "tools/Zen.Barcode.Core.dll",
+        "zen.barcode.rendering.framework.3.1.10729.1.nupkg.sha512",
+        "zen.barcode.rendering.framework.nuspec"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.6.1": [
+      "Zen.Barcode.Core.Code128 >= 3.1.0",
+      "Zen.Barcode.Rendering.Framework >= 3.1.10729.1"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\YangTV\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\YangTV\\Downloads\\tekmedi-card-writter-master\\Duali\\Duali.csproj",
+      "projectName": "Duali",
+      "projectPath": "C:\\Users\\YangTV\\Downloads\\tekmedi-card-writter-master\\Duali\\Duali.csproj",
+      "packagesPath": "C:\\Users\\YangTV\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\YangTV\\Downloads\\tekmedi-card-writter-master\\Duali\\obj\\",
+      "projectStyle": "PackageReference",
+      "skipContentFileWrite": true,
+      "UsingMicrosoftNETSdk": false,
+      "configFilePaths": [
+        "C:\\Users\\YangTV\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net461"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net461": {
+          "projectReferences": {}
+        }
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      }
+    },
+    "frameworks": {
+      "net461": {
+        "dependencies": {
+          "Zen.Barcode.Core.Code128": {
+            "target": "Package",
+            "version": "[3.1.0, )"
+          },
+          "Zen.Barcode.Rendering.Framework": {
+            "target": "Package",
+            "version": "[3.1.10729.1, )"
+          }
+        }
+      }
+    },
+    "runtimes": {
+      "win": {
+        "#import": []
+      },
+      "win-arm64": {
+        "#import": []
+      },
+      "win-x64": {
+        "#import": []
+      },
+      "win-x86": {
+        "#import": []
+      }
+    }
+  }
+}

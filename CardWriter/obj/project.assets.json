@@ -1,0 +1,386 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.7.2": {
+      "Newtonsoft.Json/13.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Zen.Barcode.Core.Code128/3.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Zen.Barcode.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Zen.Barcode.Core.dll": {}
+        }
+      },
+      "Zen.Barcode.Rendering.Framework/3.1.10729.1": {
+        "type": "package",
+        "compile": {
+          "lib/Zen.Barcode.Core.dll": {}
+        },
+        "runtime": {
+          "lib/Zen.Barcode.Core.dll": {}
+        }
+      },
+      "Duali/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.6.1",
+        "dependencies": {
+          "Zen.Barcode.Core.Code128": "3.1.0",
+          "Zen.Barcode.Rendering.Framework": "3.1.10729.1"
+        },
+        "compile": {
+          "bin/placeholder/Duali.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Duali.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.7.2/win": {
+      "Newtonsoft.Json/13.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Zen.Barcode.Core.Code128/3.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Zen.Barcode.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Zen.Barcode.Core.dll": {}
+        }
+      },
+      "Zen.Barcode.Rendering.Framework/3.1.10729.1": {
+        "type": "package",
+        "compile": {
+          "lib/Zen.Barcode.Core.dll": {}
+        },
+        "runtime": {
+          "lib/Zen.Barcode.Core.dll": {}
+        }
+      },
+      "Duali/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.6.1",
+        "dependencies": {
+          "Zen.Barcode.Core.Code128": "3.1.0",
+          "Zen.Barcode.Rendering.Framework": "3.1.10729.1"
+        },
+        "compile": {
+          "bin/placeholder/Duali.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Duali.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.7.2/win-arm64": {
+      "Newtonsoft.Json/13.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Zen.Barcode.Core.Code128/3.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Zen.Barcode.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Zen.Barcode.Core.dll": {}
+        }
+      },
+      "Zen.Barcode.Rendering.Framework/3.1.10729.1": {
+        "type": "package",
+        "compile": {
+          "lib/Zen.Barcode.Core.dll": {}
+        },
+        "runtime": {
+          "lib/Zen.Barcode.Core.dll": {}
+        }
+      },
+      "Duali/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.6.1",
+        "dependencies": {
+          "Zen.Barcode.Core.Code128": "3.1.0",
+          "Zen.Barcode.Rendering.Framework": "3.1.10729.1"
+        },
+        "compile": {
+          "bin/placeholder/Duali.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Duali.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.7.2/win-x64": {
+      "Newtonsoft.Json/13.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Zen.Barcode.Core.Code128/3.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Zen.Barcode.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Zen.Barcode.Core.dll": {}
+        }
+      },
+      "Zen.Barcode.Rendering.Framework/3.1.10729.1": {
+        "type": "package",
+        "compile": {
+          "lib/Zen.Barcode.Core.dll": {}
+        },
+        "runtime": {
+          "lib/Zen.Barcode.Core.dll": {}
+        }
+      },
+      "Duali/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.6.1",
+        "dependencies": {
+          "Zen.Barcode.Core.Code128": "3.1.0",
+          "Zen.Barcode.Rendering.Framework": "3.1.10729.1"
+        },
+        "compile": {
+          "bin/placeholder/Duali.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Duali.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.7.2/win-x86": {
+      "Newtonsoft.Json/13.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Zen.Barcode.Core.Code128/3.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Zen.Barcode.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Zen.Barcode.Core.dll": {}
+        }
+      },
+      "Zen.Barcode.Rendering.Framework/3.1.10729.1": {
+        "type": "package",
+        "compile": {
+          "lib/Zen.Barcode.Core.dll": {}
+        },
+        "runtime": {
+          "lib/Zen.Barcode.Core.dll": {}
+        }
+      },
+      "Duali/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.6.1",
+        "dependencies": {
+          "Zen.Barcode.Core.Code128": "3.1.0",
+          "Zen.Barcode.Rendering.Framework": "3.1.10729.1"
+        },
+        "compile": {
+          "bin/placeholder/Duali.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Duali.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Newtonsoft.Json/13.0.1": {
+      "sha512": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
+      "type": "package",
+      "path": "newtonsoft.json/13.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "newtonsoft.json.13.0.1.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
+    },
+    "Zen.Barcode.Core.Code128/3.1.0": {
+      "sha512": "Fi/d1B6C51t6Wx5GLLX1pvPrzXARMebACY+/AXZ4PYHL57Rt7jei/JTOLyIgTlaW9GDBQaoPeiaMF1uVqEwIlw==",
+      "type": "package",
+      "path": "zen.barcode.core.code128/3.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/Zen.Barcode.Core.dll",
+        "lib/net40/Zen.Barcode.Core.dll",
+        "lib/net45/Zen.Barcode.Core.dll",
+        "zen.barcode.core.code128.3.1.0.nupkg.sha512",
+        "zen.barcode.core.code128.nuspec"
+      ]
+    },
+    "Zen.Barcode.Rendering.Framework/3.1.10729.1": {
+      "sha512": "84Oi15A4V8eOY7BA51iLhbThxB/bGSxNS0baxbWfhpBcZoF5NBRR4QHrEbDg2VoPI+s2DA82qaO1Z2/TMDo7sg==",
+      "type": "package",
+      "path": "zen.barcode.rendering.framework/3.1.10729.1",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.txt",
+        "lib/Zen.Barcode.Core.dll",
+        "tools/BarcodeRender.exe",
+        "tools/BarcodeRender.exe.config",
+        "tools/Zen.Barcode.Core.dll",
+        "zen.barcode.rendering.framework.3.1.10729.1.nupkg.sha512",
+        "zen.barcode.rendering.framework.nuspec"
+      ]
+    },
+    "Duali/1.0.0": {
+      "type": "project",
+      "path": "../Duali/Duali.csproj",
+      "msbuildProject": "../Duali/Duali.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.7.2": [
+      "Duali >= 1.0.0",
+      "Newtonsoft.Json >= 13.0.1",
+      "Zen.Barcode.Core.Code128 >= 3.1.0",
+      "Zen.Barcode.Rendering.Framework >= 3.1.10729.1"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\YangTV\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\YangTV\\Downloads\\tekmedi-card-writter-master\\CardWriter\\CardWriter.csproj",
+      "projectName": "CardWriter",
+      "projectPath": "C:\\Users\\YangTV\\Downloads\\tekmedi-card-writter-master\\CardWriter\\CardWriter.csproj",
+      "packagesPath": "C:\\Users\\YangTV\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\YangTV\\Downloads\\tekmedi-card-writter-master\\CardWriter\\obj\\",
+      "projectStyle": "PackageReference",
+      "skipContentFileWrite": true,
+      "UsingMicrosoftNETSdk": false,
+      "configFilePaths": [
+        "C:\\Users\\YangTV\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net472"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net472": {
+          "projectReferences": {
+            "C:\\Users\\YangTV\\Downloads\\tekmedi-card-writter-master\\Duali\\Duali.csproj": {
+              "projectPath": "C:\\Users\\YangTV\\Downloads\\tekmedi-card-writter-master\\Duali\\Duali.csproj"
+            }
+          }
+        }
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      }
+    },
+    "frameworks": {
+      "net472": {
+        "dependencies": {
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[13.0.1, )"
+          },
+          "Zen.Barcode.Core.Code128": {
+            "target": "Package",
+            "version": "[3.1.0, )"
+          },
+          "Zen.Barcode.Rendering.Framework": {
+            "target": "Package",
+            "version": "[3.1.10729.1, )"
+          }
+        }
+      }
+    },
+    "runtimes": {
+      "win": {
+        "#import": []
+      },
+      "win-arm64": {
+        "#import": []
+      },
+      "win-x64": {
+        "#import": []
+      },
+      "win-x86": {
+        "#import": []
+      }
+    }
+  }
+}

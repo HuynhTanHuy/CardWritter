@@ -1,0 +1,77 @@
+F:\User\Desktop\dualisdk\Sample source\Sample code for Vendor Reader\C#\TestSample_C#_2010\WindowsFormsApplication1\Duali\bin\Debug\Duali.dll
+F:\User\Desktop\dualisdk\Sample source\Sample code for Vendor Reader\C#\TestSample_C#_2010\WindowsFormsApplication1\Duali\bin\Debug\Duali.pdb
+F:\User\Desktop\dualisdk\Sample source\Sample code for Vendor Reader\C#\TestSample_C#_2010\WindowsFormsApplication1\Duali\obj\Debug\Duali.csprojAssemblyReference.cache
+F:\User\Desktop\dualisdk\Sample source\Sample code for Vendor Reader\C#\TestSample_C#_2010\WindowsFormsApplication1\Duali\obj\Debug\Duali.csproj.CoreCompileInputs.cache
+F:\User\Desktop\dualisdk\Sample source\Sample code for Vendor Reader\C#\TestSample_C#_2010\WindowsFormsApplication1\Duali\obj\Debug\Duali.dll
+F:\User\Desktop\dualisdk\Sample source\Sample code for Vendor Reader\C#\TestSample_C#_2010\WindowsFormsApplication1\Duali\obj\Debug\Duali.pdb
+F:\User\Desktop\dolphin\CardWriter\CardWriter\Duali\bin\Debug\Duali.dll
+F:\User\Desktop\dolphin\CardWriter\CardWriter\Duali\bin\Debug\Duali.pdb
+F:\User\Desktop\dolphin\CardWriter\CardWriter\Duali\obj\Debug\Duali.csprojAssemblyReference.cache
+F:\User\Desktop\dolphin\CardWriter\CardWriter\Duali\obj\Debug\Duali.csproj.CoreCompileInputs.cache
+F:\User\Desktop\dolphin\CardWriter\CardWriter\Duali\obj\Debug\Duali.dll
+F:\User\Desktop\dolphin\CardWriter\CardWriter\Duali\obj\Debug\Duali.pdb
+F:\User\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\Duali\bin\Debug\Duali.dll
+F:\User\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\Duali\bin\Debug\Duali.pdb
+F:\User\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\Duali\obj\Debug\Duali.csprojAssemblyReference.cache
+F:\User\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\Duali\obj\Debug\Duali.csproj.CoreCompileInputs.cache
+F:\User\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\Duali\obj\Debug\Duali.dll
+F:\User\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\Duali\obj\Debug\Duali.pdb
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\Duali\bin\Debug\Duali.dll
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\Duali\bin\Debug\Duali.pdb
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\Duali\obj\Debug\Duali.csprojAssemblyReference.cache
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\Duali\obj\Debug\Duali.csproj.CoreCompileInputs.cache
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\Duali\obj\Debug\Duali.dll
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\Duali\obj\Debug\Duali.pdb
+C:\Users\anhnt\Desktop\CardWriter\CardWriter\Duali\bin\Debug\Duali.dll
+C:\Users\anhnt\Desktop\CardWriter\CardWriter\Duali\bin\Debug\Duali.pdb
+C:\Users\anhnt\Desktop\CardWriter\CardWriter\Duali\obj\Debug\Duali.csprojAssemblyReference.cache
+C:\Users\anhnt\Desktop\CardWriter\CardWriter\Duali\obj\Debug\Duali.dll
+C:\Users\anhnt\Desktop\CardWriter\CardWriter\Duali\obj\Debug\Duali.pdb
+E:\MyWork\Company\CardWriter_17022020\CardWriter\CardWriter\Duali\bin\Debug\Duali.dll
+E:\MyWork\Company\CardWriter_17022020\CardWriter\CardWriter\Duali\bin\Debug\Duali.pdb
+E:\MyWork\Company\CardWriter_17022020\CardWriter\CardWriter\Duali\obj\Debug\Duali.csprojAssemblyReference.cache
+E:\MyWork\Company\CardWriter_17022020\CardWriter\CardWriter\Duali\obj\Debug\Duali.dll
+E:\MyWork\Company\CardWriter_17022020\CardWriter\CardWriter\Duali\obj\Debug\Duali.pdb
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\Duali\bin\Debug\Duali.dll
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\Duali\bin\Debug\Duali.pdb
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\Duali\obj\Debug\Duali.dll
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\Duali\obj\Debug\Duali.pdb
+D:\CardWriter_19022020\CardWriter_19022020\CardWriter\CardWriter\Duali\bin\Debug\Duali.dll
+D:\CardWriter_19022020\CardWriter_19022020\CardWriter\CardWriter\Duali\bin\Debug\Duali.pdb
+D:\CardWriter_19022020\CardWriter_19022020\CardWriter\CardWriter\Duali\obj\Debug\Duali.dll
+D:\CardWriter_19022020\CardWriter_19022020\CardWriter\CardWriter\Duali\obj\Debug\Duali.pdb
+D:\CardWriter_19022020\CardWriter_19022020\CardWriter\CardWriter\Duali\bin\Debug\Zen.Barcode.Core.dll
+D:\CardWriter_19022020\CardWriter_19022020\CardWriter\CardWriter\Duali\obj\Debug\Duali.csprojAssemblyReference.cache
+D:\CardWriter_19022020\CardWriter_19022020\CardWriter\CardWriter\Duali\obj\Debug\Duali.csproj.CopyComplete
+C:\Users\VINH\Desktop\project\CardWriter_19022020\CardWriter_19022020\CardWriter\CardWriter\Duali\bin\Debug\Duali.dll
+C:\Users\VINH\Desktop\project\CardWriter_19022020\CardWriter_19022020\CardWriter\CardWriter\Duali\bin\Debug\Duali.pdb
+C:\Users\VINH\Desktop\project\CardWriter_19022020\CardWriter_19022020\CardWriter\CardWriter\Duali\bin\Debug\Zen.Barcode.Core.dll
+C:\Users\VINH\Desktop\project\CardWriter_19022020\CardWriter_19022020\CardWriter\CardWriter\Duali\obj\Debug\Duali.csprojAssemblyReference.cache
+C:\Users\VINH\Desktop\project\CardWriter_19022020\CardWriter_19022020\CardWriter\CardWriter\Duali\obj\Debug\Duali.csproj.CoreCompileInputs.cache
+C:\Users\VINH\Desktop\project\CardWriter_19022020\CardWriter_19022020\CardWriter\CardWriter\Duali\obj\Debug\Duali.csproj.CopyComplete
+C:\Users\VINH\Desktop\project\CardWriter_19022020\CardWriter_19022020\CardWriter\CardWriter\Duali\obj\Debug\Duali.dll
+C:\Users\VINH\Desktop\project\CardWriter_19022020\CardWriter_19022020\CardWriter\CardWriter\Duali\obj\Debug\Duali.pdb
+C:\Users\VINH\Desktop\project\Printer\CardWriter_19022020\CardWriter\CardWriter\Duali\bin\Debug\Duali.dll
+C:\Users\VINH\Desktop\project\Printer\CardWriter_19022020\CardWriter\CardWriter\Duali\bin\Debug\Duali.pdb
+C:\Users\VINH\Desktop\project\Printer\CardWriter_19022020\CardWriter\CardWriter\Duali\bin\Debug\Zen.Barcode.Core.dll
+C:\Users\VINH\Desktop\project\Printer\CardWriter_19022020\CardWriter\CardWriter\Duali\obj\Debug\Duali.csprojAssemblyReference.cache
+C:\Users\VINH\Desktop\project\Printer\CardWriter_19022020\CardWriter\CardWriter\Duali\obj\Debug\Duali.csproj.CoreCompileInputs.cache
+C:\Users\VINH\Desktop\project\Printer\CardWriter_19022020\CardWriter\CardWriter\Duali\obj\Debug\Duali.csproj.CopyComplete
+C:\Users\VINH\Desktop\project\Printer\CardWriter_19022020\CardWriter\CardWriter\Duali\obj\Debug\Duali.dll
+C:\Users\VINH\Desktop\project\Printer\CardWriter_19022020\CardWriter\CardWriter\Duali\obj\Debug\Duali.pdb
+C:\tnb-win-app\Source\Printer\CardWriter_19022020\CardWriter\CardWriter\Duali\bin\Debug\Duali.dll
+C:\tnb-win-app\Source\Printer\CardWriter_19022020\CardWriter\CardWriter\Duali\bin\Debug\Duali.pdb
+C:\tnb-win-app\Source\Printer\CardWriter_19022020\CardWriter\CardWriter\Duali\bin\Debug\Zen.Barcode.Core.dll
+C:\tnb-win-app\Source\Printer\CardWriter_19022020\CardWriter\CardWriter\Duali\obj\Debug\Duali.csprojAssemblyReference.cache
+C:\tnb-win-app\Source\Printer\CardWriter_19022020\CardWriter\CardWriter\Duali\obj\Debug\Duali.csproj.CoreCompileInputs.cache
+C:\tnb-win-app\Source\Printer\CardWriter_19022020\CardWriter\CardWriter\Duali\obj\Debug\Duali.csproj.CopyComplete
+C:\tnb-win-app\Source\Printer\CardWriter_19022020\CardWriter\CardWriter\Duali\obj\Debug\Duali.dll
+C:\tnb-win-app\Source\Printer\CardWriter_19022020\CardWriter\CardWriter\Duali\obj\Debug\Duali.pdb
+C:\Users\YangTV\Downloads\tekmedi-card-writter-master\Duali\bin\Debug\Duali.dll
+C:\Users\YangTV\Downloads\tekmedi-card-writter-master\Duali\bin\Debug\Duali.pdb
+C:\Users\YangTV\Downloads\tekmedi-card-writter-master\Duali\bin\Debug\Zen.Barcode.Core.dll
+C:\Users\YangTV\Downloads\tekmedi-card-writter-master\Duali\obj\Debug\Duali.csproj.AssemblyReference.cache
+C:\Users\YangTV\Downloads\tekmedi-card-writter-master\Duali\obj\Debug\Duali.csproj.CoreCompileInputs.cache
+C:\Users\YangTV\Downloads\tekmedi-card-writter-master\Duali\obj\Debug\Duali.csproj.Up2Date
+C:\Users\YangTV\Downloads\tekmedi-card-writter-master\Duali\obj\Debug\Duali.dll
+C:\Users\YangTV\Downloads\tekmedi-card-writter-master\Duali\obj\Debug\Duali.pdb

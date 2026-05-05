@@ -1,0 +1,23 @@
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\SCard\bin\x86\Release\netstandard2.0\SCard.deps.json
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\SCard\bin\x86\Release\netstandard2.0\SCard.dll
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\SCard\bin\x86\Release\netstandard2.0\SCard.pdb
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\SCard\obj\x86\Release\netstandard2.0\SCard.csproj.CoreCompileInputs.cache
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\SCard\obj\x86\Release\netstandard2.0\SCard.AssemblyInfoInputs.cache
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\SCard\obj\x86\Release\netstandard2.0\SCard.AssemblyInfo.cs
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\SCard\obj\x86\Release\netstandard2.0\SCard.dll
+C:\Users\anhnt\Desktop\mobileHospital\SourceCode\CardWriter\CardWriter\SCard\obj\x86\Release\netstandard2.0\SCard.pdb
+E:\MyWork\Company\CardWriter_17022020\CardWriter\CardWriter\SCard\bin\x86\Release\netstandard2.0\SCard.deps.json
+E:\MyWork\Company\CardWriter_17022020\CardWriter\CardWriter\SCard\bin\x86\Release\netstandard2.0\SCard.dll
+E:\MyWork\Company\CardWriter_17022020\CardWriter\CardWriter\SCard\bin\x86\Release\netstandard2.0\SCard.pdb
+E:\MyWork\Company\CardWriter_17022020\CardWriter\CardWriter\SCard\obj\x86\Release\netstandard2.0\SCard.AssemblyInfoInputs.cache
+E:\MyWork\Company\CardWriter_17022020\CardWriter\CardWriter\SCard\obj\x86\Release\netstandard2.0\SCard.AssemblyInfo.cs
+E:\MyWork\Company\CardWriter_17022020\CardWriter\CardWriter\SCard\obj\x86\Release\netstandard2.0\SCard.dll
+E:\MyWork\Company\CardWriter_17022020\CardWriter\CardWriter\SCard\obj\x86\Release\netstandard2.0\SCard.pdb
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\SCard\bin\x86\Release\netstandard2.0\SCard.deps.json
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\SCard\bin\x86\Release\netstandard2.0\SCard.dll
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\SCard\bin\x86\Release\netstandard2.0\SCard.pdb
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\SCard\obj\x86\Release\netstandard2.0\SCard.csprojAssemblyReference.cache
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\SCard\obj\x86\Release\netstandard2.0\SCard.AssemblyInfoInputs.cache
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\SCard\obj\x86\Release\netstandard2.0\SCard.AssemblyInfo.cs
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\SCard\obj\x86\Release\netstandard2.0\SCard.dll
+E:\MyWork\Company\CardWriter_19022020 - Copy\CardWriter_19022020\CardWriter\CardWriter\SCard\obj\x86\Release\netstandard2.0\SCard.pdb
