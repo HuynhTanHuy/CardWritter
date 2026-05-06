@@ -74,7 +74,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>54278063_635043706926040_4736857772207898624_n.ico</ApplicationIcon>
+    <ApplicationIcon>Logo-2B_20.11.2025.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -240,7 +240,7 @@
     <None Include="Resources\square-remove-button %281%29.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\54278063_635043706926040_4736857772207898624_n.jpg" />
+    <None Include="Logo-2B_20.11.2025.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Duali\Duali.csproj">
@@ -252,7 +252,7 @@
     <None Include="Resources\card_write_error.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="54278063_635043706926040_4736857772207898624_n.ico" />
+    <Content Include="Logo-2B_20.11.2025.ico" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json">

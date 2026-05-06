@@ -261,7 +261,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::CardWriter.Properties.Resources._54278063_635043706926040_4736857772207898624_n.ToBitmap();
             this.pictureBox1.Location = new System.Drawing.Point(159, 31);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(190, 112);

@@ -215,6 +215,6 @@
     <value>..\Resources\square-remove-button (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_54278063_635043706926040_4736857772207898624_n" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\54278063_635043706926040_4736857772207898624_n.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Logo-2B_20.11.2025.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

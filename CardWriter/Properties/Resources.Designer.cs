@@ -61,12 +61,12 @@ namespace CardWriter.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Icon.
         /// </summary>
-        internal static System.Drawing.Bitmap _54278063_635043706926040_4736857772207898624_n {
+        internal static System.Drawing.Icon _54278063_635043706926040_4736857772207898624_n {
             get {
                 object obj = ResourceManager.GetObject("_54278063_635043706926040_4736857772207898624_n", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ((System.Drawing.Icon)(obj));
             }
         }
         
