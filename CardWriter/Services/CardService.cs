@@ -5,6 +5,7 @@ using System.IO;
 using System.Threading;
 using CardWriter.Devices;
 using Duali;
+using Newtonsoft.Json.Linq;
 
 namespace CardWriter.Services
 {
@@ -118,7 +119,7 @@ namespace CardWriter.Services
                 {
                     Success = false,
                     ErrorKind = CardServiceErrorKind.WriteError,
-                    UserMessage = "Gọi API thất bại: " + apiRes.StatusCode + " " + apiRes.Message,
+                    UserMessage = BuildApiErrorMessage(apiRes, patientBlock),
                     IndicatorText = "Gọi API thất bại"
                 };
             }
@@ -198,7 +199,7 @@ namespace CardWriter.Services
                 {
                     Success = false,
                     ErrorKind = CardServiceErrorKind.WriteError,
-                    UserMessage = "Gọi API thất bại: " + apiRes.StatusCode + " " + apiRes.Message,
+                    UserMessage = BuildApiErrorMessage(apiRes, patientBlock),
                     IndicatorText = "Gọi API thất bại"
                 };
             }
@@ -289,5 +290,48 @@ namespace CardWriter.Services
 
         private static CardServiceResult CancelResult() =>
             new CardServiceResult { Success = false, ErrorKind = CardServiceErrorKind.Cancelled };
+
+        private static string BuildApiErrorMessage(CardApiResult apiRes, string patientBlock)
+        {
+            if (apiRes == null)
+                return "Gọi API thất bại.";
+
+            var duplicateText = ExtractDuplicateErrorText(apiRes.Message);
+            if (!string.IsNullOrWhiteSpace(duplicateText))
+                return "Mã thẻ " + patientBlock + " đã tồn tại trong bệnh viện.";
+
+            return "Gọi API thất bại: " + apiRes.StatusCode + " " + apiRes.Message;
+        }
+
+        private static string ExtractDuplicateErrorText(string rawMessage)
+        {
+            if (string.IsNullOrWhiteSpace(rawMessage))
+                return null;
+
+            if (rawMessage.IndexOf("Mã thẻ đã tồn tại trong bệnh viện", StringComparison.OrdinalIgnoreCase) >= 0)
+                return rawMessage;
+
+            try
+            {
+                var obj = JObject.Parse(rawMessage);
+                var errors = obj["errors"] as JArray;
+                if (errors == null)
+                    return null;
+
+                foreach (var token in errors)
+                {
+                    var text = token?.ToString();
+                    if (!string.IsNullOrWhiteSpace(text) &&
+                        text.IndexOf("Mã thẻ đã tồn tại trong bệnh viện", StringComparison.OrdinalIgnoreCase) >= 0)
+                        return text;
+                }
+            }
+            catch
+            {
+                // Bỏ qua lỗi parse và fallback thông điệp mặc định.
+            }
+
+            return null;
+        }
     }
 }

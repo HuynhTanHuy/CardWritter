@@ -18,6 +18,12 @@ namespace CardWriter
 {
     public partial class CardProcessForm : Form
     {
+        private sealed class RfidCardTypeItem
+        {
+            public string Name { get; set; }
+            public string Id { get; set; }
+        }
+
         private readonly IRfidReader _reader;
         private readonly CardService _cardService;
 
@@ -33,13 +39,42 @@ namespace CardWriter
         private CardWorkOperation _activeOperation = CardWorkOperation.None;
         private CancellationTokenSource _listenCts;
         private bool _singleWriteTriggered;
+        private string _selectedRfidCardTypeId = "";
 
         public CardProcessForm()
-            : this(CreateDefaultReader(), new CardService(CreateDefaultWriter(), CreateDefaultApiClient()))
+            : this(CreateDefaultReader(), CreateDefaultWriter(), null)
         {
         }
 
-        private static ICardApiClient CreateDefaultApiClient()
+        private CardProcessForm(IRfidReader reader, IRfidWriter writer, object _)
+        {
+            if (reader == null) throw new ArgumentNullException(nameof(reader));
+            if (writer == null) throw new ArgumentNullException(nameof(writer));
+
+            _reader = reader;
+            _cardService = new CardService(writer, CreateDefaultApiClient(() => _selectedRfidCardTypeId));
+
+            InitializeComponent();
+            if (!(reader is FakeRfidReader))
+                InitializeReader();
+
+            label_group.Text = String.Format("{0:00}", int.Parse(textBox_group.Text));
+
+            var section = (Hashtable)ConfigurationManager.GetSection("hospitals");
+            hospitals = section.Cast<DictionaryEntry>().ToDictionary(d => (string)d.Key, d => JsonConvert.DeserializeObject<Hospital>((string)d.Value));
+
+            comboBox1.DataSource = new BindingSource(hospitals, null);
+            comboBox1.DisplayMember = "Value";
+            comboBox1.ValueMember = "Key";
+            LoadRfidCardTypes();
+
+            loadingIndicatorWorker = new BackgroundWorker();
+            loadingIndicatorWorker.DoWork += LoadingIndicatorWorker_DoWork;
+
+            _reader.CardScanned += Reader_CardScanned;
+        }
+
+        private static ICardApiClient CreateDefaultApiClient(Func<string> cardTypeIdProvider)
         {
             var fakeFlag = ConfigurationManager.AppSettings["UseFakeCardApi"];
             if (string.Equals(fakeFlag, "true", StringComparison.OrdinalIgnoreCase))
@@ -47,8 +82,7 @@ namespace CardWriter
 
             var baseUrl = ConfigurationManager.AppSettings["CardApiBaseUrl"] ?? "";
             var bearerToken = ConfigurationManager.AppSettings["CardApiBearerToken"] ?? "";
-            var cardTypeId = ConfigurationManager.AppSettings["RfidCardTypeId"] ?? "";
-            return new HttpCardApiClient(new System.Net.Http.HttpClient(), baseUrl, bearerToken, cardTypeId);
+            return new HttpCardApiClient(new System.Net.Http.HttpClient(), baseUrl, bearerToken, cardTypeIdProvider);
         }
 
         private static IRfidWriter CreateDefaultWriter()
@@ -84,6 +118,7 @@ namespace CardWriter
             comboBox1.DataSource = new BindingSource(hospitals, null);
             comboBox1.DisplayMember = "Value";
             comboBox1.ValueMember = "Key";
+            LoadRfidCardTypes();
 
             loadingIndicatorWorker = new BackgroundWorker();
             loadingIndicatorWorker.DoWork += LoadingIndicatorWorker_DoWork;
@@ -424,6 +459,49 @@ namespace CardWriter
             RefreshData();
         }
 
+        private void ComboBoxCardType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxCardType.SelectedItem is RfidCardTypeItem selected)
+                _selectedRfidCardTypeId = (selected.Id ?? "").Trim();
+        }
+
+        private void LoadRfidCardTypes()
+        {
+            var raw = ConfigurationManager.AppSettings["RfidCardTypes"] ?? "";
+            List<RfidCardTypeItem> cardTypes;
+            try
+            {
+                cardTypes = JsonConvert.DeserializeObject<List<RfidCardTypeItem>>(raw) ?? new List<RfidCardTypeItem>();
+            }
+            catch
+            {
+                cardTypes = new List<RfidCardTypeItem>();
+            }
+
+            cardTypes = cardTypes
+                .Where(x => x != null && !string.IsNullOrWhiteSpace(x.Id))
+                .Select(x => new RfidCardTypeItem
+                {
+                    Name = string.IsNullOrWhiteSpace(x.Name) ? x.Id : x.Name.Trim(),
+                    Id = x.Id.Trim()
+                })
+                .ToList();
+
+            comboBoxCardType.DataSource = cardTypes;
+            comboBoxCardType.DisplayMember = "Name";
+            comboBoxCardType.ValueMember = "Id";
+
+            if (cardTypes.Count == 0)
+            {
+                _selectedRfidCardTypeId = "";
+                MessageBox.Show("Thiếu hoặc sai cấu hình RfidCardTypes.", "Lỗi cấu hình", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            comboBoxCardType.SelectedIndex = 0;
+            _selectedRfidCardTypeId = cardTypes[0].Id;
+        }
+
         private void RefreshData()
         {
             var selectedItem = (KeyValuePair<string, Hospital>)comboBox1.SelectedItem;
@@ -442,6 +520,13 @@ namespace CardWriter
                 string.IsNullOrWhiteSpace(selectedItem.Value.Id))
             {
                 MessageBox.Show("Vui lòng chọn bệnh viện hợp lệ.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(_selectedRfidCardTypeId))
+            {
+                MessageBox.Show("Vui lòng chọn loại thẻ hợp lệ.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                comboBoxCardType.Focus();
                 return false;
             }
 

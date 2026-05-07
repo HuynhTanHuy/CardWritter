@@ -10,14 +10,19 @@ namespace CardWriter.Services
         private readonly HttpClient _http;
         private readonly string _baseUrl;
         private readonly string _bearerToken;
-        private readonly string _rfidCardTypeId;
+        private readonly Func<string> _rfidCardTypeIdProvider;
 
         public HttpCardApiClient(HttpClient http, string baseUrl, string bearerToken, string rfidCardTypeId)
+            : this(http, baseUrl, bearerToken, () => rfidCardTypeId)
+        {
+        }
+
+        public HttpCardApiClient(HttpClient http, string baseUrl, string bearerToken, Func<string> rfidCardTypeIdProvider)
         {
             _http = http ?? throw new ArgumentNullException(nameof(http));
             _baseUrl = (baseUrl ?? "").Trim().TrimEnd('/');
             _bearerToken = (bearerToken ?? "").Trim();
-            _rfidCardTypeId = (rfidCardTypeId ?? "").Trim();
+            _rfidCardTypeIdProvider = rfidCardTypeIdProvider ?? (() => "");
         }
 
         public CardApiResult CreateOrUpdateCard(string hospitalId, string rfidCardNumber, string rfidCardBatchCode)
@@ -26,7 +31,8 @@ namespace CardWriter.Services
                 return new CardApiResult { Success = false, Message = "Thiếu CardApiBaseUrl." };
             if (string.IsNullOrWhiteSpace(_bearerToken))
                 return new CardApiResult { Success = false, Message = "Thiếu CardApiBearerToken." };
-            if (string.IsNullOrWhiteSpace(_rfidCardTypeId))
+            var rfidCardTypeId = (_rfidCardTypeIdProvider() ?? "").Trim();
+            if (string.IsNullOrWhiteSpace(rfidCardTypeId))
                 return new CardApiResult { Success = false, Message = "Thiếu RfidCardTypeId." };
             if (string.IsNullOrWhiteSpace(hospitalId))
                 return new CardApiResult { Success = false, Message = "Thiếu hospitalId." };
@@ -39,7 +45,7 @@ namespace CardWriter.Services
             {
                 hospitalId = hospitalId,
                 rfidCardNumber = rfidCardNumber,
-                rfidCardTypeId = _rfidCardTypeId,
+                rfidCardTypeId = rfidCardTypeId,
                 rfidCardBatchCode = rfidCardBatchCode,
                 status = 4,
                 isActive = true
